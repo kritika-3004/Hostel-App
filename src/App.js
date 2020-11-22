@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import { Redirect, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Sidebar from './components/Sidebar';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Home from './pages/Home';
+import Students from './pages/Students';
+import Maintenance from './pages/Maintenance';
+import LateComer from './pages/LateComer';
+
+import CreateStudents from './pages/CreateStudents';
+import EditStudents from './pages/EditStudents'
+class App extends Component {
+
+  render() {
+    return (
+      <React.Fragment>
+        <Router>
+          <Sidebar />
+          <Switch>
+            <Route exact path='/dashboard' component={Home} />
+            <Route exact path='/dashboard/students' component={Students} />
+            <Route exact path='/dashboard/students/create' component={CreateStudents} />
+            <Route exact path='/dashboard/students/edit/:identity' component={EditStudents} />
+            <Route exact path='/dashboard/maintenance' component={Maintenance} />
+            <Route exact path='/dashboard/late-comer' component={LateComer} />
+          </Switch>
+        </Router>
+      </React.Fragment>
+    );
+  }
 }
 
 export default App;
