@@ -5,15 +5,22 @@
   font-family: 'Poppins', sans-serif;
   scroll-behavior: smooth;
 }
-
+body{
+  background-image: url(https://firebasestorage.googleapis.com/v0/b/hostel-project-18e90.appspot.com/o/Crossways%20iPhone%20Wallpaper%20-%20iPhone%20Wallpapers.jpg?alt=media&token=8afa4f2a-9462-4979-a2a7-109232decfbb);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 /* Color variables */
 :root{
   --light-red: #ff6363;
   --red: #f12f46;
   --dark-red: #ce1b30;
-  --dark-pink: #ff0588;
-  --main-peach: #ff4e6a;
+  --dark-pink: #ff0037;
+  --main-peach: #fc3048;
   --light-gradient: #ff934e;
+  --white-head:rgb(220,218,218);
+  --white-input:rgb(142,141,145);
   --off-white: #fbfbfb;
   --white: #ffffff;
   --darker-off-white: #f8f8f8;
@@ -49,26 +56,28 @@ th {
 .tableContainer{
   padding:10px;
   border-radius: 6px;
-background: #ffffff;
-box-shadow:  10px 10px 40px #dfdfdf, 
-             -10px -10px 40px #ffffff;
+background: rgba(42,46,50,0.7);
+box-shadow:  #34393d;
+overflow-x: auto;
 }
 .table {
 	width: 100%;
 	border-spacing: 0;
-	border-collapse: separate;
+  border-collapse: separate;
+  color: var(--white-input);
 }
 
 .table th {
-	font-weight: 500;
-	font-size: 16px;
+	font-weight: 600;
+  font-size: 16px;
+  color: var(--white-head);
 }
 
 .table td,
 .table th {
 	padding: 15px 10px;
 	text-align: left;
-	border-bottom: 1px solid #ebeef0;
+	border-bottom: 1px solid var(--white-input);
 	min-width: 100px;
 }
 .table th > button {
@@ -84,12 +93,12 @@ box-shadow:  10px 10px 40px #dfdfdf,
 	align-items: center;
 }
 .table th > button:hover {
-	color: var(--main-red);
+	color: var(--off-white);
 }
 .table th > button > i {
 	margin-left: 10px;
 	transition: all 0.6s;
-	color: var(--main-red);
+	color: var(--off-white);
 }
 .table th > button:focus{
   outline:none
@@ -105,19 +114,19 @@ box-shadow:  10px 10px 40px #dfdfdf,
   transition: all 0.2s;
 }
 .table tr:hover{
-  background-color: #fafafa;
+  background-color: rgba(42,46,50,0.8);
 }
 
 .table td .icon-link:first-child {
 	padding-left: 0;
 }
 .table td > a.row-link {
-	color: #212b36;
+	color: var(--off-white);
 	transition: all 0.3s;
 	text-decoration: none;
 }
 .table td > a.row-link:hover {
-	color: var(--main-red);
+	color: var(--off-white);
 }
 .table .action-td button{
 	margin:2px 2px
@@ -212,7 +221,7 @@ box-shadow:  10px 10px 40px #dfdfdf,
 	justify-content: space-between;
 	align-items: center;
 	padding: 0.6rem 0.6rem;
-	border:1px solid var(--grey81);
+	border:1px solid var(--white-input);
 	-webkit-box-direction: normal;
 	border-radius: 12px;
   color: var(--dark-grey);
@@ -227,8 +236,9 @@ box-shadow:  10px 10px 40px #dfdfdf,
   color: black;
   border: 1px solid;
   border-radius: 6px;
-  border-image-slice: 1;
-  border-image-source:linear-gradient(to right,var(--dark-pink),var(--light-gradient));
+  border: 1px solid var(--white-head);
+  /* border-image-slice: 1;
+  border-image-source:linear-gradient(to right,var(--dark-pink),var(--light-gradient)); */
 }
 .listSearchBar {
 	width: 90%;
@@ -241,7 +251,7 @@ box-shadow:  10px 10px 40px #dfdfdf,
 	font-size: 100%;
 	background-color: transparent;
 	padding: 0;
-	color: var(--main-peach);
+	color: var(--white-head);
   margin-left: 10px;
 }
 ::placeholder{
@@ -392,7 +402,6 @@ max-height:60vh;
 }
 .btn-primary:hover,
 .btn-primary:focus{
-  border: 1px solid var(--dark-pink);
   background-color: var(--dark-pink);
 }
 
@@ -498,7 +507,6 @@ max-height:60vh;
   margin:0 0 30px 0;
   padding:0px 0;
   border-radius:15px;
-  /* background: #ffffff; */
   box-shadow:  2px 2px 6px #d9d9d9, 
                -2px -2px 6px #ffffff;
 
@@ -568,12 +576,12 @@ max-height:60vh;
  .sidebar{
   position: fixed;
   z-index: 999;
-  background-color: var(--main-peach);
+  /* background-color: var(--main-peach); */
+  background-color: rgba(20,18,26,1);
   min-height:100vh;
-  min-width:100px;
+  min-width:120px;
   top:0;
   left:0;
-  box-shadow: var(--box-shadow-dark-red);
   padding:20px 5px;
   display: flex;
   justify-content: space-between;
@@ -637,20 +645,17 @@ max-height:60vh;
 .dashboard-main-page{
   padding-left:8%;
   padding-top: 15px ;
+  min-height: 100vh;
+  background-color: rgba(20,18,26,0.9);
 }
 .dashboard-heading-row{
-  display: flex;
-  z-index:1;
-  width:92%;
-  background-color: #fff;
-  justify-content: space-between;
-  position: fixed;
-  left:8%;
   padding: 10px 4% 25px 4%;
-  border-bottom: 1px solid var(--light-grey);
+  display: flex;
+  justify-content: space-between;
 }
 .dashboard-heading h1{
   font-size: 160%;
+  color: var(--off-white);
 }
 .dashboard-section{
   margin:50px 0;
@@ -658,7 +663,16 @@ max-height:60vh;
 .content-space{
   padding:70px 4% 60px 4%;
 }
-
+.header{
+  background-color: rgba(20,18,26,0.4);
+  z-index:1;
+  width:92%;
+  position: fixed;
+  left:8%;
+  padding-top: 10px;
+  margin-top: -15px;
+  border-bottom: 1px solid rgb(142,141,145);
+}
 /* Subnav for link navigation */
 .subnav-container {
 	margin-left: 4%;
@@ -752,24 +766,26 @@ max-height:60vh;
 .ui-form-textField,
 .ui-form-textArea,
 .ui-form-select {
+  
 	display: block;
 	width: 100%;
 }
 .ui-form-label {
 	font-size: 1rem;
-	color: #212b36;
+	color: rgb(220,218,218);
 	margin-bottom: 0.4rem;
 }
 .ui-form-textField,
 .ui-form-textArea {
+  background-color: rgba(42,46,50,0.8);
 	font-size: 1rem;
 	line-height: 2rem;
 	min-height: 3rem;
 	padding: 0.2rem 0.8rem;
-	border: 1px solid #cccccc;
+	border: 1px solid rgb(142,141,145);
 	border-radius: 3px;
 	appearance: none;
-	color: #212b36;
+	color: rgb(142,141,145);
 }
 
 /* Headings */
@@ -788,15 +804,15 @@ max-height:60vh;
 .ui-subheading-light {
 	font-size: 1.1rem;
 	text-transform: none;
-	color: #637381;
+	color: rgb(142,141,145);
 	font-weight: 400;
 }
 .ui-card {
 	border-radius: 3px;
-	color: #212b36;
-	background-color: #ffffff;
+	color: rgb(142,141,145);
+	background: rgba(42,46,50,0.7);
 	-webkit-box-shadow: rgba(63, 63, 68, 0.0470588) 0px 0px 0px 1px, rgba(63, 63, 68, 0.14902) 0px 1px 3px 0px;
-	box-shadow: rgba(63, 63, 68, 0.0470588) 0px 0px 0px 1px, rgba(63, 63, 68, 0.14902) 0px 1px 3px 0px;
+	box-shadow:  #34393d;
 	-webkit-box-direction: normal;
 	line-height: 20px;
   padding: 1.4rem;

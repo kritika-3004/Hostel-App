@@ -59,22 +59,22 @@ class CreateStudents extends Component {
 
         return (
             <div className="dashboard-main-page" >
-                <div className="subnav-container">
-                    <ul className="subnav">
-                        <li><Link to='/dashboard/students'>Students</Link></li>
-                        <li>Create</li>
-                    </ul>
-                </div>
-                <div className="dashboard-heading-row">
-
-                    <div className="dashboard-heading">
-                        <h1>Create</h1>
+                <div className="header">
+                    <div className="subnav-container">
+                        <ul className="subnav">
+                            <li><Link to='/dashboard/students'>Students</Link></li>
+                            <li>Create</li>
+                        </ul>
                     </div>
-                    <div>
-                        <Button text="Save" onClick={this.addData} />
+                    <div className="dashboard-heading-row">
+                        <div className="dashboard-heading">
+                            <h1>Create</h1>
+                        </div>
+                        <div>
+                            <Button text="Save" onClick={this.addData} />
+                        </div>
                     </div>
                 </div>
-
                 <div className="content-space">
                     <section className="dashboard-section">
                         <section className="dashboard-card-section">

@@ -85,6 +85,7 @@ class EditStudents extends Component {
 
         return (
             <div className="dashboard-main-page" >
+                <div className="header">
                 <div className="subnav-container">
                     <ul className="subnav">
                         <li><Link to='/dashboard/students'>Students</Link></li>
@@ -100,7 +101,7 @@ class EditStudents extends Component {
                         <Button text="Save" onClick={this.addData} />
                     </div>
                 </div>
-
+                </div>
                 <div className="content-space">
                     <section className="dashboard-section">
                         <section className="dashboard-card-section">

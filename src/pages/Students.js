@@ -70,6 +70,7 @@ class Students extends Component {
         ]
         return (
             <div className="dashboard-main-page" >
+                <div className="header">
                 <div className="dashboard-heading-row">
                     <div className="dashboard-heading">
                         <h1>Students</h1>
@@ -78,7 +79,7 @@ class Students extends Component {
                         <Button text="Add" link="/dashboard/students/create" />
                     </div>
                 </div>
-
+                </div>
                 <div className="content-space">
                     {loaded ?
                         <section className="dashboard-section">
