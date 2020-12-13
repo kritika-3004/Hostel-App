@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CircularLoader from '../components/CircularLoader';
 import Button from '../components/Button';
 import Table from '../components/Table';
+import Popup from '../components/Popup';
 import { db } from '../config/fire';
 import { convertTimeStampToDateString } from '../common_functions/conversion';
 
@@ -10,7 +11,24 @@ class Students extends Component {
         super(props);
         this.state = {
             students: [],
-            loaded: false
+            loaded: false,
+            deletePopup: {
+                show: false,
+                headline: "",
+                content: <div></div>,
+                actions: [
+                  {
+                    text: "Cancel",
+                    buttonType: "red",
+                    onClick: this.hideProcessPopup
+                  }
+                ],
+                cancelAction: {
+                  show: true,
+                  onClick: this.hideProcessPopup
+                },
+                color: "pink"
+              }
         }
     }
 
@@ -19,8 +37,8 @@ class Students extends Component {
     }
 
     fetchData = () => {
-        db.collection("students").get()
-            .then((querySnapshot) => {
+        this.listener= db.collection("students")
+            .onSnapshot((querySnapshot) => {
                 let students = []
                 querySnapshot.forEach((doc) => {
                     var dataToBePushed = doc.data()
@@ -35,8 +53,140 @@ class Students extends Component {
             })
     }
 
+/**
+     * To show delete popup
+     * @param {string} id - id of student
+     */
+    showDeletePopup = (id) => {
+        const student = this.state.students.find(student => student.id === id)
+
+            let popupContent = <div>
+                <p>Deleting the student <strong>"{student.name}"</strong> will remove all data associated with it from database.</p>
+            </div>
+            this.setState({
+                deletePopup: {
+                    show: true,
+                    headline: "Are you sure you want to delete?",
+                    content: popupContent,
+                    actions: [
+                        {
+                            text: "Cancel",
+                            buttonType: "grey",
+                            onClick: this.hideDeletePopup
+                        },
+                        {
+                            text: "Yes, I'm sure.",
+                            buttonType: "warning",
+                            onClick: () => this.deleteProcess(id)
+                        }
+                    ],
+                    cancelAction: {
+                        show: true,
+                        onClick: this.hideDeletePopup
+                    },
+                    color: "red"
+                }
+            })
+    }
+
+    /**
+     * To hide delete popup
+     */
+    hideDeletePopup = () => {
+        this.setState({
+            deletePopup: {
+                show: false,
+                headline: "",
+                content: <div></div>,
+                actions: [
+                    {
+                        text: "Cancel",
+                        buttonType: "grey",
+                        onClick: this.hideDeletePopup
+                    },
+                    {
+                        text: "Yes, I'm sure.",
+                        buttonType: "warning",
+                        onClick: this.deleteProcess
+                    }
+                ],
+                cancelAction: {
+                    show: true,
+                    onClick: this.hideDeletePopup
+                },
+                color: "red"
+            }
+        })
+    }
+
+    /**
+     * Function to delete data from database
+     * @param {string} id - id of student to be deleted
+     */
+    deleteProcess = (id) => {
+
+        this.setState({
+            deletePopup: {
+                show: true,
+                headline: "Deleting...",
+                content: <CircularLoader text={"Deleting..."} color="red" />,
+                actions: [],
+                cancelAction: {
+                    show: false,
+                    onClick: this.hideDeletePopup
+                },
+                color: "red"
+            }
+        }, () => {
+            db.collection("students").doc(id).delete()
+                .then(() => {
+                    this.setState({
+                        deletePopup: {
+                            show: true,
+                            headline: "Deleted",
+                            content: <p>The student was successfully deleted from the list.</p>,
+                            actions: [
+                                {
+                                    text: "Okay",
+                                    buttonType: "grey",
+                                    onClick: this.hideDeletePopup
+                                }
+                            ],
+                            cancelAction: {
+                                show: true,
+                                onClick: this.hideDeletePopup
+                            },
+                            color: "red"
+                        }
+                    })
+                })
+                .catch((error) => {
+                    console.error(error)
+                    this.setState({
+                        deletePopup: {
+                            show: true,
+                            headline: "Uh oh!",
+                            content: <p>The student detail could not be deleted.</p>,
+                            actions: [
+                                {
+                                    text: "Okay",
+                                    buttonType: "grey",
+                                    onClick: this.hideDeletePopup
+                                }
+                            ],
+                            cancelAction: {
+                                show: true,
+                                onClick: this.hideDeletePopup
+                            },
+                            color: "red"
+                        }
+                    })
+                })
+        })
+    }
+
     render() {
-        const { students, loaded } = this.state
+        const { students, loaded, deletePopup } = this.state
 
         const columns = [
             {
@@ -66,6 +216,12 @@ class Students extends Component {
                 link: "/dashboard/students/edit/",
                 text: "Edit",
                 buttonClass: "action-link action-green"
+            },
+            {
+                icon: "far fa-trash-alt",
+                trigger: (id) => this.showDeletePopup(id),
+                text: "Delete",
+                buttonClass: "action-link action-red"
             }
         ]
         return (
@@ -73,10 +229,10 @@ class Students extends Component {
                 <div className="header">
                 <div className="dashboard-heading-row">
                     <div className="dashboard-heading">
-                        <h1>Students</h1>
+                        <h2>Students</h2>
                     </div>
                     <div>
-                        <Button text="Add" link="/dashboard/students/create" />
+                        <Button text="Add" link="/dashboard/students/create" icon="fas fa-plus"/>
                     </div>
                 </div>
                 </div>
@@ -93,9 +249,7 @@ class Students extends Component {
                         :
                         <CircularLoader fullPage />}
                 </div>
-
-
-
+                {deletePopup.show ? <Popup headline={deletePopup.headline} content={deletePopup.content} actions={deletePopup.actions} cancelAction={deletePopup.cancelAction} color={deletePopup.color} /> : null}
             </div>
         );
     }

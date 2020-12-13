@@ -17,7 +17,7 @@ const Popup = props => {
 
     const { headline, content, actions, cancelAction, color, size } = props
     return (
-        <div className="popup-new">
+        <div className="popup">
             <div className={size === "large" ? "popup-inner large-popup" : "popup-inner"}>
                 <div className={"popup-header popup-header-" + color}>
                     <h3>{headline}</h3>

@@ -1,3 +1,5 @@
+import { timestamp } from "../config/fire"
+
 /**
  * Function takes a date string and returns a Date object
  * @param {String} dateString Input date string in YYYY-MM-DD format
@@ -28,13 +30,6 @@ export const convertDateObjectToDateString = (date) => {
     return date.getFullYear() + "-" + (date.getMonth() < 9 ? "0" : "") + (date.getMonth() + 1).toString() + "-" + (date.getDate() < 10 ? "0" : "") + date.getDate()
 }
 
-export const getAgeFromDateOfBirth = (birthday) => {
-    let ageDifference = Date.now() - birthday
-    let ageDate = new Date(ageDifference)
-
-    return (Math.abs(ageDate.getUTCFullYear() - 1970))
-}
-
 /**
  * Function to convert Firestore Timestamp to string (date)
  * @param {Firestore.Timestamp} timestamp - Firestore timestamp to be converted
@@ -57,4 +52,15 @@ export const convertTimeStampToDateObject = (timestamp) => {
     var seconds = timestamp.seconds
     date.setUTCSeconds(seconds)
     return date
+}
+
+export const convertTimeStampToTimeString = (timestamp)=>{
+    if (timestamp === undefined || timestamp === null) {
+        return ""
+    } else {
+        var date = new Date(0);
+        var seconds = timestamp.seconds
+        date.setUTCSeconds(seconds)
+        return date.toTimeString()
+    }
 }

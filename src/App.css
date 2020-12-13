@@ -44,8 +44,14 @@ p{
   line-height: 1.6;
 }
 h1{
+  font-size: 54px;
+  font-weight: 550;
+  color: var(--white);
+}
+h2{
   font-size: 32px;
   font-weight: 550;
+  color: white;
 }
 
 /* Table Component */
@@ -147,28 +153,26 @@ overflow-x: auto;
 .table-no-results > p{
   font-size: 120%;
 }
-.empty-table-placeholder {
-	min-height: 70vh;
-	width: 100%;
-	background-size: cover;
-	padding: 5vh 0;
+.empty-table{
+  display:flex;
+  padding:30px 2%;
+  border-radius: 6px;
+  background: rgba(42,46,50,0.7);
+  flex-direction: column;
+  box-shadow:  #34393d;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
 }
-
-.empty-table-text {
-	max-width: 40%;
+.empty-table i{
+  display:block;
+  color:var(--main-blue);
+  margin-bottom: 30px;
+  font-size: 300%;
 }
-.empty-table-text h3 {
-	line-height: 3.2rem;
-	font-size: 2rem;
-	font-weight: 400;
-	color: #212b36;
-}
-.empty-table-text p {
-	margin: 1rem 0 2rem 0;
-	line-height: 1.6;
-	font-size: 1.2rem;
-	font-weight: 400;
-	color: #637381;
+.empty-table h3{
+  color:var(--dark-blue);
+  font-weight: 300;
 }
 
 .action-link {
@@ -507,8 +511,6 @@ max-height:60vh;
   margin:0 0 30px 0;
   padding:0px 0;
   border-radius:15px;
-  box-shadow:  2px 2px 6px #d9d9d9, 
-               -2px -2px 6px #ffffff;
 
 }
 .tabContainer button{
@@ -531,9 +533,6 @@ max-height:60vh;
 .tabContainer button:hover{
   background-color: var(--darker-off-white);
   color: var(--main-peach);
-  box-shadow:  5px 5px 10px #dfdfdf, 
-               -5px -5px 10px #ffffff;
-               z-index:1
 }
 
 .tabContainer button.active{
@@ -592,7 +591,7 @@ max-height:60vh;
   width:100%;
 }
 .sidebar-logo img{
-  width:40%;
+  width:50%;
   margin:0 30% 20px 30%;
 }
 .sidebar-links{
@@ -787,7 +786,10 @@ max-height:60vh;
 	appearance: none;
 	color: rgb(142,141,145);
 }
-
+.ui-form-textField:focus,
+.ui-form-textArea:focus {
+  outline: none;
+}
 /* Headings */
 .ui-heading {
 	font-size: 1.8rem;
@@ -817,4 +819,52 @@ max-height:60vh;
 	line-height: 20px;
   padding: 1.4rem;
   margin:2px;
+}
+
+.popup-form-label,
+.popup-form-textField,
+.popup-form-select {
+  
+	display: block;
+	width: 100%;
+}
+.popup-form-label {
+	font-size: 1rem;
+	color: #212b36;
+	margin-bottom: 0.4rem;
+}
+.popup-form-textField{
+  font-size: 1rem;
+	line-height: 2rem;
+	min-height: 3rem;
+  padding: 0.2rem 0.8rem;
+  margin-bottom: 10px;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	appearance: none;
+	color: #212b36;
+}
+.popup-form-textField:focus{
+  outline: none;
+}
+.lottie{
+  width: 50vw;
+}
+.homepage{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.homepage div{
+  width: 50%;
+}
+.homepage-text{
+  padding: 20px;
+  text-align: center;
+}
+.homepage-text p{
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 550;
+  color: var(--white-input);
 }

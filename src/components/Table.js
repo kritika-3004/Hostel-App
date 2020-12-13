@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ListSearch from './ListSearch';
 import PropTypes from 'prop-types'
-import ErrorIcon from '@material-ui/icons/Error';
 
 // Table.js
 /** 
@@ -137,7 +136,7 @@ class Table extends Component {
         if (data.length === 0) {
 
             return (<div className="empty-table">
-                <ErrorIcon />
+                <i className="far fa-question-circle"></i>
                 <h3>Nothing to show here.</h3></div>)
         }
         return (

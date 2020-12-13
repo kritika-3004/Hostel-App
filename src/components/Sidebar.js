@@ -1,8 +1,9 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import QuestionAnswerOutlinedIcon from '@material-ui/icons/QuestionAnswerOutlined';
-import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
-import ExploreOutlinedIcon from '@material-ui/icons/ExploreOutlined';
+import SettingsIcon from '@material-ui/icons/Settings';
+import GroupAddIcon from '@material-ui/icons/GroupAdd';
+import WatchLaterIcon from '@material-ui/icons/WatchLater';
+import HomeIcon from '@material-ui/icons/Home';
 
 const Sidebar = () => {
 
@@ -16,24 +17,25 @@ const Sidebar = () => {
                     <ul>
                         <li>
                             <NavLink exact to="/dashboard" >
-                                <ExploreOutlinedIcon />
+                                <HomeIcon/>
                                 <span>Home</span>
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to="/dashboard/students" activeClassName="active">
+                                <GroupAddIcon/>
                                 <span>Students</span>
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to="/dashboard/maintenance" activeClassName="active">
-                                <QuestionAnswerOutlinedIcon />
+                                <SettingsIcon/>
                                 <span>Maintenance</span>
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to="/dashboard/late-comer" activeClassName="active" >
-                                <AccountCircleOutlinedIcon />
+                                <WatchLaterIcon/>
                                 <span>Late Comer</span>
                             </NavLink>
                         </li>

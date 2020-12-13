@@ -10,6 +10,10 @@ import LateComer from './pages/LateComer';
 
 import CreateStudents from './pages/CreateStudents';
 import EditStudents from './pages/EditStudents'
+import CreateMaintenance from './pages/CreateMaintenance';
+import EditMaintenance from './pages/EditMaintenance';
+import CreateLateComer from './pages/CreateLateComer';
+
 class App extends Component {
 
   render() {
@@ -23,7 +27,10 @@ class App extends Component {
             <Route exact path='/dashboard/students/create' component={CreateStudents} />
             <Route exact path='/dashboard/students/edit/:identity' component={EditStudents} />
             <Route exact path='/dashboard/maintenance' component={Maintenance} />
+            <Route exact path='/dashboard/maintenance/create' component={CreateMaintenance} />
+            <Route exact path='/dashboard/maintenance/edit/:identity' component={EditMaintenance} />
             <Route exact path='/dashboard/late-comer' component={LateComer} />
+            <Route exact path='/dashboard/late-comer/create' component={CreateLateComer}/>
           </Switch>
         </Router>
       </React.Fragment>
