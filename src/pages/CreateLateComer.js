@@ -59,7 +59,7 @@ class CreateLateComer extends Component {
                     </div>
                     <div className="dashboard-heading-row">
                         <div className="dashboard-heading">
-                            <h1>Create</h1>
+                            <h2>Create</h2>
                         </div>
                         <div>
                             <Button text="Save" onClick={this.addData} />

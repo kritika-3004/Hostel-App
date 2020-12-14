@@ -83,7 +83,7 @@ class EditMaintenance extends Component {
                 <div className="dashboard-heading-row">
 
                     <div className="dashboard-heading">
-                        <h1>Edit</h1>
+                        <h2>Edit</h2>
                     </div>
                     <div>
                         <Button text="Save" onClick={this.addData} />
